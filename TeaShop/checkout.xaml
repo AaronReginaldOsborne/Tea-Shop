@@ -1,0 +1,68 @@
+﻿<Page x:Class="TeaShop.Checkout"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:TeaShop"
+      xmlns:prop="clr-namespace:TeaShop.Properties"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      mc:Ignorable="d" 
+      d:DesignHeight="620" d:DesignWidth="1010"
+      Title="checkout">
+
+    <Grid>
+        <WrapPanel>
+            <StackPanel Orientation="Vertical">
+                <ListView x:Name="lvCheckOut" SelectionChanged="LvCheckOut_SelectionChanged">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn DisplayMemberBinding="{Binding ProductName}" Header="{x:Static prop:Resources.productname}" />
+                            <GridViewColumn DisplayMemberBinding="{Binding ProductDescription}" Header="{x:Static prop:Resources.description}" />
+                            <GridViewColumn DisplayMemberBinding="{Binding ProductSize}" Header="{x:Static prop:Resources.size}" />
+                            <GridViewColumn DisplayMemberBinding="{Binding Quntity}" Header="{x:Static prop:Resources.quantity}" />
+                            <GridViewColumn DisplayMemberBinding="{Binding ProductCost, StringFormat={}{0:C}}" Header="{x:Static prop:Resources.price}" />
+                            <GridViewColumn DisplayMemberBinding="{Binding ProductTotal, StringFormat={}{0:C}}" Header="{x:Static prop:Resources.total}" />
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+                <Grid VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,0,30,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="100"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="{x:Static prop:Resources.subtotal}"></TextBlock>
+                    <TextBlock x:Name="tbSubTotal" Text="$100" Grid.Column="1" HorizontalAlignment="Right"></TextBlock>
+                    <TextBlock Text="{x:Static prop:Resources.tax}" Grid.Row="1" Grid.Column="0" ></TextBlock>
+                    <TextBlock x:Name="tbTax" Text="$10" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Right"></TextBlock>
+                    <TextBlock Text="{x:Static prop:Resources.grandtotal}"  Grid.Row="2" Grid.Column="0"></TextBlock>
+                    <TextBlock x:Name="tbTotal" Text="$100"  Grid.Row="2" Grid.Column="1" HorizontalAlignment="Right"></TextBlock>
+                </Grid>
+                <StackPanel Orientation="Horizontal" >
+                    <TextBox x:Name="tbProductName" IsReadOnly="True" materialDesign:HintAssist.Hint="{x:Static prop:Resources.productname}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" MinWidth="160" Margin="20 20 20 0"/>
+                    <TextBox x:Name="tbChangeQty"  materialDesign:HintAssist.Hint="{x:Static prop:Resources.changeqty}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" MinWidth="50" Margin="20 20 20 0"/>
+                    <Button Style="{StaticResource MaterialDesignRaisedDarkButton}" Width="100" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20 20 20 20" Click="UpdateOnClick" Content="Update" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" >
+                    <TextBox x:Name="tbMailAddress" IsReadOnly="True" materialDesign:HintAssist.Hint="{x:Static prop:Resources.mailaddress}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" MinWidth="400" Margin="20 20 20 0"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" >
+                    <ComboBox materialDesign:HintAssist.Hint="{x:Static prop:Resources.cardtype}" Width="100" Margin="20 20 10 10">
+                        <ComboBoxItem>Visa</ComboBoxItem>
+                        <ComboBoxItem>Mastercard</ComboBoxItem>
+                        <ComboBoxItem>American Express</ComboBoxItem>
+                    </ComboBox>
+                    <TextBox x:Name="tbCreditCard" materialDesign:HintAssist.Hint="{x:Static prop:Resources.creditcardnumber}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" MinWidth="270" Margin="20 20 20 20"/>
+                </StackPanel>
+                <Button Style="{StaticResource MaterialDesignRaisedDarkButton}" Width="400" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20 20 20 20" Click="BtnPurchaseOrderOnClick" Content="{x:Static prop:Resources.purchaseorder}"></Button>
+            </StackPanel>
+        </WrapPanel>
+        <materialDesign:Snackbar
+        MessageQueue="{materialDesign:MessageQueue}"
+        x:Name="SnackbarAdded" />
+    </Grid>
+</Page>

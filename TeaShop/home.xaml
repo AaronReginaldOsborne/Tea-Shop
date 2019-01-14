@@ -1,0 +1,82 @@
+﻿<Page x:Class="TeaShop.home"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:local="clr-namespace:TeaShop"
+      xmlns:prop="clr-namespace:TeaShop.Properties"
+      mc:Ignorable="d" 
+      d:DesignHeight="620" d:DesignWidth="500"
+      Title="home">
+
+    <Grid Margin="1">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="200"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <GroupBox Header="{x:Static prop:Resources.userinformation}" Style="{DynamicResource MaterialDesignGroupBox}" Margin="1" materialDesign:ShadowAssist.ShadowDepth="Depth3" BorderThickness="0">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="{x:Static prop:Resources.firstname}" />
+                <TextBlock x:Name="tbFirstName"                             Grid.Row="0" Grid.Column="1" HorizontalAlignment="left" />
+                <TextBlock Text="{x:Static prop:Resources.lastname}"        Grid.Row="1" Grid.Column="0"/>
+                <TextBlock x:Name="tbLastName"                              Grid.Row="1" Grid.Column="1" HorizontalAlignment="left" />
+                <TextBlock Text="{x:Static prop:Resources.dateofbirth}"     Grid.Row="2" Grid.Column="0" />
+                <TextBlock x:Name="tbDateOfBirth"                           Grid.Row="2" Grid.Column="1" HorizontalAlignment="left" />
+                <TextBlock Text="{x:Static prop:Resources.address}"         Grid.Row="3" Grid.Column="0" />
+                <TextBlock x:Name="tbAddress"                               Grid.Row="3" Grid.Column="1" HorizontalAlignment="left" />
+                <TextBlock Text="{x:Static prop:Resources.city}"            Grid.Row="4" Grid.Column="0" />
+                <TextBlock x:Name="tbCity"                                  Grid.Row="4" Grid.Column="1" HorizontalAlignment="left" />
+                <TextBlock Text="{x:Static prop:Resources.province}"        Grid.Row="5" Grid.Column="0" />
+                <TextBlock x:Name="tbProvince"                              Grid.Row="5" Grid.Column="1" HorizontalAlignment="left" />
+                <TextBlock Text="{x:Static prop:Resources.postalcode}"      Grid.Row="6" Grid.Column="0" />
+                <TextBlock x:Name="tbPostalCode"                            Grid.Row="6" Grid.Column="1" HorizontalAlignment="left" />
+                <TextBlock Text="{x:Static prop:Resources.phonenumber}"     Grid.Row="7" Grid.Column="0" />
+                <TextBlock x:Name="tbPhoneNumber"                           Grid.Row="7" Grid.Column="1" HorizontalAlignment="left" />
+                <TextBlock Text="{x:Static prop:Resources.email}"           Grid.Row="8" Grid.Column="0" />
+                <TextBlock x:Name="tbEmail"                                 Grid.Row="8" Grid.Column="1" HorizontalAlignment="left" />
+            </Grid>
+        </GroupBox>
+        <GroupBox Header="{x:Static prop:Resources.teaorderinformation}" Style="{DynamicResource MaterialDesignGroupBox}" Margin="1" materialDesign:ShadowAssist.ShadowDepth="Depth3" BorderThickness="0" Grid.Column="1">
+            <TextBlock TextWrapping="Wrap">
+                <ListView x:Name="lvCheckOut">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn DisplayMemberBinding="{Binding ProductName}" Header="{x:Static prop:Resources.productname}" />
+                            <GridViewColumn DisplayMemberBinding="{Binding ProductDescription}" Header="{x:Static prop:Resources.description}" />
+                            <GridViewColumn DisplayMemberBinding="{Binding ProductSize}" Header="{x:Static prop:Resources.size}" />
+                            <GridViewColumn DisplayMemberBinding="{Binding Quntity}" Header="{x:Static prop:Resources.quantity}" />
+                            <GridViewColumn DisplayMemberBinding="{Binding ProductCost, StringFormat={}{0:C}}" Header="{x:Static prop:Resources.price}" />
+                            <GridViewColumn DisplayMemberBinding="{Binding ProductTotal, StringFormat={}{0:C}}" Header="{x:Static prop:Resources.total}" />
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </TextBlock>
+        </GroupBox>
+        <MediaElement x:Name="meVideo" Grid.Row="1"  Grid.ColumnSpan="2" MaxWidth="1000">
+        </MediaElement>
+        <Button Background="#FF4572A0" BorderBrush="#FF4572A0" Content="{x:Static prop:Resources.loadlastuserdata}" Grid.Row="2" Grid.Column="0" Margin="20" VerticalAlignment="Top" Click="LoadUser"/>
+        <Button Background="#FF4572A0" BorderBrush="#FF4572A0" Content="{x:Static prop:Resources.loadlastteaorder}" Grid.Row="2" Grid.Column="1" Margin="20" VerticalAlignment="Top" Click="LoadCheckout" />
+    </Grid>
+</Page>
