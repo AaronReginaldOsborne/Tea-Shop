@@ -10,5 +10,5 @@ A wpf Application using
 
 # Shop Page
 
-![alt text](https://media.licdn.com/dms/image/C4D2DAQE-12SOYf0h9A/profile-treasury-image-shrink_800_800/0/1602105476480?e=1686837600&v=beta&t=a0IcWHvfvCLfwY_EkjTyNK7G3Tr1y1xgNEk8gnE5oFw)
+![alt text](https://media.licdn.com/dms/image/C4D2DAQG7eLK_sOt3Tw/profile-treasury-image-shrink_800_800/0/1596831977703?e=1686837600&v=beta&t=mbA760TYWHWObu5mf7KDZEUtdLXFSrd916Si7QXky0A)
 
